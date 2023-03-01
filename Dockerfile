@@ -20,7 +20,7 @@ RUN go mod download && \
 
 #WORKDIR /app
 
-COPY --from=build /app/main .
+##COPY --from=build /app/main .
 
 CMD ["./main"]
 
