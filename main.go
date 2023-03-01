@@ -81,7 +81,7 @@ func wordpress(w http.ResponseWriter, r *http.Request) {
 
 	fmt.Println("Path: " + r.URL.Path + " Forward to: " + "http://" + dip + ":" + str)
 
-	u, _ := url.Parse("https://" + dip + ":443")
+	u, _ := url.Parse("http://" + dip + ":80")
 	pro := httputil.NewSingleHostReverseProxy(u)
 
 	//r.URL.Path = "/"
