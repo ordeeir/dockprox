@@ -37,14 +37,14 @@ func main() {
 		//sslkey = os.Args[4]
 	}
 
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Println("Forward /")
-		b, _ := os.ReadFile("index.html")
-		fmt.Fprint(w, string(b))
-	})
+	//http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+	//	fmt.Println("Forward /")
+	//	b, _ := os.ReadFile("index.html")
+	//	fmt.Fprint(w, string(b))
+	//})
 
 	// Anything we don't do in Go, we pass to the old platform
-	http.HandleFunc("/wordpress/", wordpress) //  ex. /wordpress/xyxshxpxchxy/photo3235
+	http.HandleFunc("/", wordpress) //  ex. /wordpress/xyxshxpxchxy/photo3235
 
 	fmt.Println("Listening on localhost:" + lport)
 	fmt.Println("Forward to:" + dip)
@@ -81,11 +81,10 @@ func wordpress(w http.ResponseWriter, r *http.Request) {
 
 	fmt.Println("Path: " + r.URL.Path + " Forward to: " + "http://" + dip + ":" + str)
 
-	//u, _ := url.Parse("http://" + getEnvVariable("DIP") + ":" + vars[2])
-	u, _ := url.Parse("http://" + dip + ":" + str)
+	u, _ := url.Parse("http://" + dip + ":443")
 	pro := httputil.NewSingleHostReverseProxy(u)
 
-	r.URL.Path = "/"
+	//r.URL.Path = "/"
 
 	pro.ServeHTTP(w, r)
 }
