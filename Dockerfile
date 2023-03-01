@@ -1,4 +1,4 @@
-FROM golang:1.17-alpine AS build
+FROM golang:1.17 AS build
 
 ENV HTTPS_PROXY="http://fodev.org:8118"
 
@@ -13,12 +13,12 @@ RUN go mod download && \
   # Make the final output executable
   chmod +x ./main
 
-FROM alpine:latest
+#FROM alpine:latest
 
 # Install os packages
-RUN apk --no-cache add bash
+#RUN apk --no-cache add bash
 
-WORKDIR /app
+#WORKDIR /app
 
 COPY --from=build /app/main .
 
