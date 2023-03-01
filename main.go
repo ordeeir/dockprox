@@ -16,7 +16,7 @@ var sslkey string
 
 func main() {
 
-	lport = "30111"
+	lport = "80"
 	dip = "91.107.130.30"
 	sslcert = os.Getenv("SSL_CERT")
 	sslkey = os.Getenv("SSL_KEY")

@@ -24,4 +24,4 @@ RUN go mod download && \
 
 CMD ["./main"]
 
-EXPOSE 30111
+EXPOSE 80
