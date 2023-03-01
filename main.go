@@ -52,10 +52,10 @@ func main() {
 	// Start the server
 	if lport == "443" {
 
-		http.ListenAndServeTLS(":"+lport, sslcert, sslkey, nil)
+		http.ListenAndServeTLS("0.0.0.0:"+lport, sslcert, sslkey, nil)
 
 	} else {
-		http.ListenAndServe(":"+lport, nil)
+		http.ListenAndServe("0.0.0.0:"+lport, nil)
 
 	}
 
